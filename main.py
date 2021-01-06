@@ -18,6 +18,15 @@ def ask_price():
     return user_input
 
 
+def ask_qte():
+    while True:
+        user_input = input("Quelle quantité d’article souhaitez vous acheter ? (Valeur en nombre uniquement) : ")
+        # if user_input.isnumeric():
+        break
+
+    return user_input
+
+
 def start_text():
     print("Vous venez de lancer le logiciel Elephant Carpaccio, celui-ci permet de calculer le montant d’une commande, en fonction du nombre de produit, du prix de ce même produit et enfin avoir une taxe différente en fonction de votre état.")
     print("les états supporté par le logiciel sont les suivants : ")
@@ -46,6 +55,7 @@ def main():
     start_text2()
     user_state = ask_state()
     user_price = ask_price()
+    user_qte = ask_qte()
 
 
 if __name__ == '__main__':
