@@ -1,3 +1,11 @@
+# Globals
+state_taxe = {
+    "UT": 0.0685,
+    "NV": 0.08,
+    "TX": 0.0400,
+    "AL": 0.0400,
+    "CA": 0.0825
+}
 
 
 def ask_state():
@@ -15,7 +23,7 @@ def ask_price():
         # if user_input.isnumeric():
         break
 
-    return user_input
+    return float(user_input)
 
 
 def ask_qte():
@@ -24,7 +32,7 @@ def ask_qte():
         # if user_input.isnumeric():
         break
 
-    return user_input
+    return int(user_input)
 
 
 def start_text():
@@ -49,6 +57,50 @@ def start_text2():
     print("")
 
 
+def compute_bill(_user_state, _user_price, _user_qte):
+    bill = _user_qte * _user_price
+    bill_reduc = 0
+    bill_taxe = 0
+
+    if bill <= 1000:
+        bill_reduc = bill * 0.03
+    elif bill <= 5000:
+        bill_reduc = bill * 0.05
+    elif bill <= 7000:
+        bill_reduc = bill * 0.07
+    elif bill <= 10000:
+        bill_reduc = bill * 0.10
+    elif bill <= 50000:
+        bill_reduc = bill * 0.15
+
+        print("UT - 6.85 %")
+        print("NV - 8.00 %")
+        print("TX - 6.25 %")
+        print("AL - 4.00 %")
+        print("CA - 8.25 %")
+
+    if _user_state == "UT":
+        bill_taxe = bill_reduc * 0.0685
+    elif _user_state == "NV":
+        bill_taxe = bill_reduc * 0.08
+    elif _user_state == "TX":
+        bill_taxe = bill_reduc * 0.0625
+    elif _user_state == "AL":
+        bill_taxe = bill_reduc * 0.0400
+    elif _user_state == "CA":
+        bill_taxe = bill_reduc * 0.0825
+
+    return {
+        "bill": bill,
+        "bill_reduc": bill_reduc,
+        "bill_taxe": bill_taxe
+    }
+
+
+def print_bill(_bill_computen _user_state):
+    print("Votre commande est d’un total de :", _bill_compute["bill"] - _bill_compute["bill_reduc"] + _bill_compute["bill_taxe"], "$ TTC soit", _bill_compute["bill"] - _bill_compute["bill_reduc"], "$ HT, puisque votre état est :", _user_state, "la taxe à appliquer est : XX % le montant de la taxe est : XX $ ...")
+
+
 def main():
     print("Hello world")
     start_text()
@@ -56,6 +108,7 @@ def main():
     user_state = ask_state()
     user_price = ask_price()
     user_qte = ask_qte()
+    print(compute_bill(user_state, user_price, user_qte))
 
 
 if __name__ == '__main__':
