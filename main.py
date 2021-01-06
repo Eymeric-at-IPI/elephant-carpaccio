@@ -2,11 +2,20 @@
 
 def ask_state():
     while True:
-        user_state = input("Choisissez l’état dans lequel vous êtes(Veuillez renseigner les deux lettres de votre état, parmi la liste suivante ? (UT - NV - TX - AL - CA)): ")
-        # if user_state in ["UT", "NV", "TX", "AL", "CA"]:
+        user_input = input("Choisissez l’état dans lequel vous êtes(Veuillez renseigner les deux lettres de votre état, parmi la liste suivante ? (UT - NV - TX - AL - CA)): ")
+        # if user_input in ["UT", "NV", "TX", "AL", "CA"]:
         break
 
-    return user_state
+    return user_input
+
+
+def ask_price():
+    while True:
+        user_input = input("Quel est le prix de l’article que vous souhaitez acheter ? (Valeur en nombre uniquement) : ")
+        # if user_input.isnumeric():
+        break
+
+    return user_input
 
 
 def start_text():
@@ -17,12 +26,26 @@ def start_text():
     print("TX - 6.25 %")
     print("AL - 4.00 %")
     print("CA - 8.25 %")
+    print("")
+
+
+def start_text2():
+    print("Pour information voici les différentes réduction dont vous pouvez bénéficier :")
+    print("Valeur commande    Réduction")
+    print("1 000 $        3 %")
+    print("5 000 $        5 %")
+    print("7 000 $        7 %")
+    print("10 000 $        10 %")
+    print("50 000 $        15 %")
+    print("")
 
 
 def main():
     print("Hello world")
     start_text()
+    start_text2()
     user_state = ask_state()
+    user_price = ask_price()
 
 
 if __name__ == '__main__':
