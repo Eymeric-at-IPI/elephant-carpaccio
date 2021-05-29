@@ -2,4 +2,4 @@
 Atelier Métode Agile avec SCRUM
 
 
-![test](https://gph.is/st/YzPyRo5)
+![test](.images/logo.gif)
